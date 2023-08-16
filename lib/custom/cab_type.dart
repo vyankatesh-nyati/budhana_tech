@@ -3,6 +3,7 @@ import 'package:budhana_tech_task/custom/common/button.dart';
 import 'package:budhana_tech_task/custom/common/container.dart';
 import 'package:budhana_tech_task/custom/common/search_bar.dart';
 import 'package:budhana_tech_task/enums/trip.dart';
+import 'package:budhana_tech_task/screens/vehical.dart';
 import 'package:flutter/material.dart';
 
 class CabTypeWidget extends StatefulWidget {
@@ -20,6 +21,14 @@ class _CabTypeWidgetState extends State<CabTypeWidget> {
   ];
 
   TripEnum tripType = TripEnum.oneWay;
+
+  void onClickNextHandler() => {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const VehicalScreen(),
+          ),
+        )
+      };
 
   @override
   Widget build(BuildContext context) {
@@ -58,22 +67,23 @@ class _CabTypeWidgetState extends State<CabTypeWidget> {
             height: MediaQuery.of(context).size.height * 0.45,
             child: TabBarView(
               children: [
-                const Column(
+                Column(
                   children: [
-                    SizedBox(height: 16),
-                    CustomContainer(
+                    const SizedBox(height: 16),
+                    const CustomContainer(
                       child: CustomSearchBar(labelText: "Destination"),
                     ),
-                    SizedBox(height: 30),
-                    CustomButton(buttonText: "Next"),
-                    SizedBox(height: 30)
+                    const SizedBox(height: 30),
+                    CustomButton(
+                        buttonText: "Next", onPressed: onClickNextHandler),
+                    const SizedBox(height: 30)
                   ],
                 ),
-                const Column(
+                Column(
                   // mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(height: 16),
-                    CustomContainer(
+                    const SizedBox(height: 16),
+                    const CustomContainer(
                       child: Padding(
                         padding: EdgeInsets.symmetric(
                           vertical: 24,
@@ -149,7 +159,10 @@ class _CabTypeWidgetState extends State<CabTypeWidget> {
                       ),
                     ),
                     SizedBox(height: 30),
-                    CustomButton(buttonText: "Next"),
+                    CustomButton(
+                      buttonText: "Next",
+                      onPressed: onClickNextHandler,
+                    ),
                     SizedBox(height: 30)
                   ],
                 ),
@@ -165,68 +178,46 @@ class _CabTypeWidgetState extends State<CabTypeWidget> {
                             children: [
                               const SizedBox(width: 12),
                               tripType == TripEnum.oneWay
-                                  ? ElevatedButton.icon(
-                                      onPressed: null,
-                                      icon: const Icon(Icons.done),
-                                      label: Text(TripEnum.oneWay.type),
-                                      style: ElevatedButton.styleFrom(
-                                        disabledForegroundColor: black,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                        ),
+                                  ? Chip(
+                                      label: Row(
+                                        children: [
+                                          const Icon(Icons.done, size: 18),
+                                          const SizedBox(width: 6),
+                                          Text(TripEnum.oneWay.type)
+                                        ],
                                       ),
+                                      backgroundColor: black.withOpacity(0.1),
                                     )
-                                  : OutlinedButton(
-                                      onPressed: () {
+                                  : GestureDetector(
+                                      onTap: () {
                                         setState(() {
                                           tripType = TripEnum.oneWay;
                                         });
                                       },
-                                      style: OutlinedButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                        ),
-                                      ),
-                                      child: Text(
-                                        TripEnum.oneWay.type,
-                                        style: const TextStyle(
-                                          color: black,
-                                        ),
+                                      child: Chip(
+                                        label: Text(TripEnum.oneWay.type),
                                       ),
                                     ),
                               const SizedBox(width: 12),
                               tripType == TripEnum.roundTrip
-                                  ? ElevatedButton.icon(
-                                      onPressed: null,
-                                      icon: const Icon(Icons.done),
-                                      label: Text(TripEnum.roundTrip.type),
-                                      style: ElevatedButton.styleFrom(
-                                        disabledForegroundColor: black,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                        ),
+                                  ? Chip(
+                                      label: Row(
+                                        children: [
+                                          const Icon(Icons.done, size: 18),
+                                          const SizedBox(width: 6),
+                                          Text(TripEnum.roundTrip.type)
+                                        ],
                                       ),
+                                      backgroundColor: black.withOpacity(0.1),
                                     )
-                                  : OutlinedButton(
-                                      onPressed: () {
+                                  : GestureDetector(
+                                      onTap: () {
                                         setState(() {
                                           tripType = TripEnum.roundTrip;
                                         });
                                       },
-                                      style: OutlinedButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                        ),
-                                      ),
-                                      child: Text(
-                                        TripEnum.roundTrip.type,
-                                        style: const TextStyle(
-                                          color: black,
-                                        ),
+                                      child: Chip(
+                                        label: Text(TripEnum.roundTrip.type),
                                       ),
                                     ),
                             ],
@@ -236,7 +227,10 @@ class _CabTypeWidgetState extends State<CabTypeWidget> {
                       ),
                     ),
                     const SizedBox(height: 30),
-                    const CustomButton(buttonText: "Next"),
+                    CustomButton(
+                      buttonText: "Next",
+                      onPressed: onClickNextHandler,
+                    ),
                     const SizedBox(height: 30)
                   ],
                 ),

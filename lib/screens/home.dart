@@ -21,6 +21,7 @@ class HomeScreen extends StatelessWidget {
                 Image.asset(
                   "assets/images/map.jpeg",
                   height: MediaQuery.of(context).size.height * 0.45,
+                  width: double.infinity,
                   fit: BoxFit.cover,
                 ),
                 const Positioned(
@@ -33,9 +34,7 @@ class HomeScreen extends StatelessWidget {
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: white,
-                        border: OutlineInputBorder(
-                          
-                        ),
+                        border: OutlineInputBorder(),
                         prefixIcon: Icon(Icons.search),
                       ),
                     ),
