@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Budhana Tech',
       theme: ThemeData(
-        // colorScheme: ColorScheme.fromSeed(seedColor: yellow),
+        colorScheme: ColorScheme.fromSeed(seedColor: yellow),
         fontFamily: 'Inter',
         appBarTheme: const AppBarTheme(
           // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
